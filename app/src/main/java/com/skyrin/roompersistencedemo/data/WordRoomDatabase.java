@@ -8,7 +8,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 
-@Database(entities = {Word.class},version = 1)
+@Database(entities = {Word.class},version = 3)
 public abstract class WordRoomDatabase extends RoomDatabase {
     public abstract WordDao wordDao();
 
@@ -32,7 +32,9 @@ public abstract class WordRoomDatabase extends RoomDatabase {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext()
                             ,WordRoomDatabase.class
                             ,"word_database")
-                            .addCallback(sRoomDatabaseCallback)
+//                            .addCallback(sRoomDatabaseCallback)
+//                            .addMigrations()
+                            .fallbackToDestructiveMigration()
                             .build();
                 }
             }
